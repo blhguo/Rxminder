@@ -9,14 +9,14 @@ from ocr  import detect_handwritten_ocr_uri
 
 def createReminder(service, uri):
     now = datetime.now()# 'Z' indicates UTC time
-    print(now)
+    #print(now)
     x = detect_handwritten_ocr_uri(uri)
     y = int(x[1])/int(x[0])
-    print("days")
-    print(y)
+    #print("days")
+    #print(y)
     td = timedelta(days=y)
     mydate = now + td
-    print(mydate)
+    #print(mydate)
     Mydate = mydate.isoformat()
     td1 = timedelta(hours=1)
     mydate1 = mydate + td1
@@ -45,7 +45,7 @@ def createReminder(service, uri):
     }
     event = service.events().insert(calendarId='primary', body=event).execute()
     for i in range(int(y)):
-        print("make")
+        #print("make")
         temp = createR(now, i)
         temp = service.events().insert(calendarId='primary', body=temp).execute()
 

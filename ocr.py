@@ -50,7 +50,7 @@ def detect_handwritten_ocr_uri(uri):
                         symbol.text for symbol in word.symbols
                     ])
                     if flag1 and flag2:
-                        print(word_text)
+                        #print(word_text)
                         ret.append(word_text)
                         flag2 = False
                     if flag:
@@ -62,12 +62,12 @@ def detect_handwritten_ocr_uri(uri):
                         flag = True
                     if flag3:
                         if word_text.isdigit:
-                            print("occur")
+                            #print("occur")
                             ret.append(word_text)
                             flag3 = False
                     elif (word_text == "TAKE" or word_text == "Take" or word_text == "take"):
                         flag3 = True
                     
 
-    print (ret)
+    #print (ret)
     return ret
