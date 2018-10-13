@@ -3,6 +3,7 @@ import datetime
 from googleapiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
+from ocr  import detect_handwritten_ocr_uri
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = 'https://www.googleapis.com/auth/calendar.events'
@@ -47,6 +48,8 @@ def main():
     
     event = service.events().insert(calendarId='primary', body=event).execute()
     print('Event created: %s' % (event.get('htmlLink')))
+
+    detect_handwritten_ocr_uri("gs://bucket-name-123/abbey_road.jpg")
 
 if __name__ == '__main__':
     main()
