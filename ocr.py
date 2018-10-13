@@ -1,7 +1,7 @@
 '''
 Created on Oct 13, 2018
 
-@author: calma
+@author: brandon guo
 '''
 def detect_handwritten_ocr_uri(uri):
     """Detects handwritten characters in the file located in Google Cloud
