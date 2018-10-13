@@ -49,7 +49,7 @@ def main():
     event = service.events().insert(calendarId='primary', body=event).execute()
     print('Event created: %s' % (event.get('htmlLink')))
 
-    detect_handwritten_ocr_uri("gs://bucket-name-123/abbey_road.jpg")
+    detect_handwritten_ocr_uri("gs://rxminder_bucket1/prescrptions-label.png")
 
 if __name__ == '__main__':
     main()
