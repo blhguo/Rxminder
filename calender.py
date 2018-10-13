@@ -4,6 +4,7 @@ from googleapiclient.discovery import build
 from httplib2 import Http
 from oauth2client import file, client, tools
 from ocr  import detect_handwritten_ocr_uri
+from ParseLabel  import createReminder
 
 # If modifying these scopes, delete the file token.json.
 SCOPES = 'https://www.googleapis.com/auth/calendar.events'
@@ -21,35 +22,14 @@ def main():
 
     # Call the Calendar API
     now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
-    
-    event = {
-      'summary': 'Google I/O 2018',
-      'description': 'A chance to hear more about Google\'s developer products.',
-      'start': {
+    print(now)
 
-        'dateTime': '2018-10-14T09:00:00-07:00',
-        'timeZone': 'America/New_York',
-      },
-      'end': {
-        'dateTime': '2018-10-14T17:00:00-07:00',
-        'timeZone': 'America/New_York',
-      },
-      'recurrence': [
-        'RRULE:FREQ=DAILY;COUNT=2'
-      ],
-      'reminders': {
-        'useDefault': False,
-        'overrides': [
-          {'method': 'email', 'minutes': 24 * 60},
-          {'method': 'popup', 'minutes': 10},
-        ],
-      },
-    }
+    createReminder(service, "gs://rxminder_bucket1/prescrptions-label.png")
     
-    event = service.events().insert(calendarId='primary', body=event).execute()
-    print('Event created: %s' % (event.get('htmlLink')))
+    #event = service.events().insert(calendarId='primary', body=event).execute()
+    #print('Event created: %s' % (event.get('htmlLink')))
 
-    detect_handwritten_ocr_uri("gs://rxminder_bucket1/prescrptions-label.png")
+    #detect_handwritten_ocr_uri("gs://rxminder_bucket1/prescrptions-label.png")
 
 if __name__ == '__main__':
     main()

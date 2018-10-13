@@ -36,11 +36,10 @@ def detect_handwritten_ocr_uri(uri):
 
     for page in response.full_text_annotation.pages:
         for block in page.blocks:
-            print('\nBlock confidence: {}\n'.format(block.confidence))
+            #print('\nBlock confidence: {}\n'.format(block.confidence))
 
             for paragraph in block.paragraphs:
-                print('Paragraph confidence: {}'.format(
-                    paragraph.confidence))
+                #print('Paragraph confidence: {}'.format(paragraph.confidence))
 
                 for word in paragraph.words:
 
@@ -56,8 +55,8 @@ def detect_handwritten_ocr_uri(uri):
                         flag2 = False
                     if flag:
                         flag1 = True
-                    print('Word text: {} (confidence: {})'.format(
-                        word_text, word.confidence))
+                    #print('Word text: {} (confidence: {})'.format(
+                        #word_text, word.confidence))
 
                     if word_text == "Qty":
                         flag = True
