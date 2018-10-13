@@ -25,11 +25,11 @@ def main():
       'summary': 'Google I/O 2015',
       'description': 'A chance to hear more about Google\'s developer products.',
       'start': {
-        'dateTime': '2018-08-14T09:00:00-07:00',
+        'dateTime': '2018-09-14T09:00:00-07:00',
         'timeZone': 'America/New_York',
       },
       'end': {
-        'dateTime': '2018-08-14T17:00:00-07:00',
+        'dateTime': '2018-09-14T17:00:00-07:00',
         'timeZone': 'America/New_York',
       },
       'recurrence': [
