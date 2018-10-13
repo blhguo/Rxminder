@@ -25,6 +25,15 @@ def detect_handwritten_ocr_uri(uri):
                                               image_context=image_context)
 
     print('Full Text: {}'.format(response.full_text_annotation.text))
+
+    ret = []
+    flag = False
+    flag1 = False
+    flag2 = True
+    flag3 = False
+
+
+
     for page in response.full_text_annotation.pages:
         for block in page.blocks:
             print('\nBlock confidence: {}\n'.format(block.confidence))
@@ -34,12 +43,32 @@ def detect_handwritten_ocr_uri(uri):
                     paragraph.confidence))
 
                 for word in paragraph.words:
+
+
+
+                    
                     word_text = ''.join([
                         symbol.text for symbol in word.symbols
                     ])
+                    if flag1 and flag2:
+                        print(word_text)
+                        ret.append(word_text)
+                        flag2 = False
+                    if flag:
+                        flag1 = True
                     print('Word text: {} (confidence: {})'.format(
                         word_text, word.confidence))
 
-                    for symbol in word.symbols:
-                        print('\tSymbol: {} (confidence: {})'.format(
-                            symbol.text, symbol.confidence))
+                    if word_text == "Qty":
+                        flag = True
+                    if flag3:
+                        if word_text.isdigit:
+                            print("occur")
+                            ret.append(word_text)
+                            flag3 = False
+                    elif (word_text == "TAKE" or word_text == "Take" or word_text == "take"):
+                        flag3 = True
+                    
+
+    print (ret)
+    return ret
