@@ -43,9 +43,6 @@ def detect_handwritten_ocr_uri(uri):
 
                 for word in paragraph.words:
 
-
-
-                    
                     word_text = ''.join([
                         symbol.text for symbol in word.symbols
                     ])
@@ -58,7 +55,7 @@ def detect_handwritten_ocr_uri(uri):
                     #print('Word text: {} (confidence: {})'.format(
                         #word_text, word.confidence))
 
-                    if word_text == "Qty":
+                    if word_text == "Qty" or word_text == "Quantiy" or word_text == "amount":
                         flag = True
                     if flag3:
                         if word_text.isdigit:

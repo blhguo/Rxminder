@@ -31,5 +31,23 @@ def main():
 
     #detect_handwritten_ocr_uri("gs://rxminder_bucket1/prescrptions-label.png")
 
+def endpoint(str):
+    store = file.Storage('token.json')
+    creds = store.get()
+    if not creds or creds.invalid:
+        flow = client.flow_from_clientsecrets('credentials.json', SCOPES)
+        creds = tools.run_flow(flow, store)
+    service = build('calendar', 'v3', http=creds.authorize(Http()))
+
+    # Call the Calendar API
+    #now = datetime.datetime.utcnow().isoformat() + 'Z' # 'Z' indicates UTC time
+    #print(now)
+
+    createReminder(service, str)
+    
+    #event = service.events().insert(calendarId='primary', body=event).execute()
+    #print('Event created: %s' % (event.get('htmlLink')))
+
+
 if __name__ == '__main__':
     main()
