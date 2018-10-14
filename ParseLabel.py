@@ -11,6 +11,7 @@ def createReminder(service, uri):
     now = datetime.now()# 'Z' indicates UTC time
     #print(now)
     x = detect_handwritten_ocr_uri(uri)
+    #print(x)
     y = int(x[1])/int(x[0])
     #print("days")
     #print(y)
